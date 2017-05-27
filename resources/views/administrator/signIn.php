@@ -10,7 +10,7 @@
                         <form method="post" role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="您的账户名称（邮件地址）" name="email" type="email" autofocus>
+                                    <input class="form-control" placeholder="您的账户名称（邮件地址或者代理账号）" name="email" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="您的密码" name="password" type="password" value="">
