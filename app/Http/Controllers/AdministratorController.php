@@ -112,7 +112,8 @@ class AdministratorController extends Controller
 
         return view('administrator.home', [
             'active' => 'home',
-            'data' => $data
+            'data' => $data,
+            'is_admin' => $this->is_admin,
         ]);
 
     }
@@ -132,6 +133,7 @@ class AdministratorController extends Controller
         $datas = $datas->paginate(20);
 
         return view('administrator.users', [
+            'is_admin' => $this->is_admin,
             'active' => 'users',
             'datas' => $datas,
             'id_user' => $request->input('id_user')
@@ -181,6 +183,7 @@ class AdministratorController extends Controller
         $datas = $datas->paginate(20);
 
         return view('administrator.orders', [
+            'is_admin' => $this->is_admin,
             'active' => 'orders',
             'datas' => $datas,
             'id_user' => $request->input('id_user'),
@@ -214,6 +217,7 @@ class AdministratorController extends Controller
         $datas = $datas->paginate(20);
 
         return view('administrator.records', [
+            'is_admin' => $this->is_admin,
             'active' => 'records',
             'datas' => $datas,
             'id_user' => $request->input('id_user')
@@ -243,6 +247,7 @@ class AdministratorController extends Controller
         $datas = $datas->paginate(20);
 
         return view('administrator.payRequests', [
+            'is_admin' => $this->is_admin,
             'active' => 'payRequests',
             'datas' => $datas,
             'id_user' => $request->input('id_user')
@@ -286,6 +291,7 @@ class AdministratorController extends Controller
         }
 
         return view('administrator.withholdForUser', [
+            'is_admin' => $this->is_admin,
             'active' => 'users',
             'id_user' => $id,
             'alert' => $alert
@@ -338,6 +344,7 @@ class AdministratorController extends Controller
         }
 
         return view('administrator.payForUser', [
+            'is_admin' => $this->is_admin,
             'active' => 'users',
             'id_user' => $id,
             'alert' => $alert
@@ -371,6 +378,7 @@ class AdministratorController extends Controller
             }
         }
         return view('administrator.withdrawForUser', [
+            'is_admin' => $this->is_admin,
             'active' => 'withdrawRequests',
             'alert' => $alert,
             'id' => $id,
@@ -445,6 +453,7 @@ class AdministratorController extends Controller
         $datas = $datas->paginate(20);
 //    dd($datas);
         return view('administrator.withdrawRequests', [
+            'is_admin' => $this->is_admin,
             'active' => 'withdrawRequests',
             'datas' => $datas,
             'id_user' => $request->input('id_user')
@@ -457,6 +466,7 @@ class AdministratorController extends Controller
         $this->requiredSession($request);
         $datas = Object::orderBy('created_at', 'desc')->paginate(20);
         return view('administrator.objects', [
+            'is_admin' => $this->is_admin,
             'active' => 'objects',
             'datas' => $datas
         ]);
@@ -467,6 +477,7 @@ class AdministratorController extends Controller
         $this->requiredSession($request);
         $datas = Feedback::orderBy('created_at', 'desc')->paginate(20);
         return view('administrator.feedbacks', [
+            'is_admin' => $this->is_admin,
             'active' => 'feedbacks',
             'datas' => $datas
         ]);
@@ -477,6 +488,7 @@ class AdministratorController extends Controller
         $this->requiredSession($request);
         $datas = Administrator::orderBy('created_at', 'desc')->paginate(20);
         return view('administrator.administrators', [
+            'is_admin' => $this->is_admin,
             'active' => 'administrators',
             'datas' => $datas
         ]);
@@ -929,6 +941,7 @@ class AdministratorController extends Controller
         } else {
             $list = Grade::paginate(15);
             return view('administrator.grade', [
+                'is_admin' => $this->is_admin,
                 'active' => 'grade',
                 'list' => $list
             ]);
@@ -980,6 +993,7 @@ class AdministratorController extends Controller
         } else {
             $data = System::first();
             return view('administrator.system', [
+                'is_admin' => $this->is_admin,
                 'active' => 'system',
                 'data' => $data
             ]);
@@ -1014,7 +1028,7 @@ class AdministratorController extends Controller
 
 
         return view('administrator.settlement', [
-
+            'is_admin' => $this->is_admin,
 
             'active' => 'settlement',
 
@@ -1095,6 +1109,7 @@ class AdministratorController extends Controller
     {
 
         return view('administrator.reward', [
+            'is_admin' => $this->is_admin,
             'active' => 'reward',
         ]);
     }
